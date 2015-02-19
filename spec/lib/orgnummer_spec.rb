@@ -20,6 +20,7 @@ describe Orgnummer do
     let(:ab) { Orgnummer.new(5568610827) }
     let(:ab_s) { Orgnummer.new('5568610827') }
     let(:ab_s_with_hyphen) { Orgnummer.new('556861-0827') }
+    let(:ab_s_with_spaces) { Orgnummer.new('  556861-0827   ') }
 
 
     describe 'validate' do
@@ -34,6 +35,7 @@ describe Orgnummer do
         expect(ab.valid?).to be true
         expect(ab_s.valid?).to be true
         expect(ab_s_with_hyphen.valid?).to be true
+        expect(ab_s_with_spaces.valid?).to be true
       end
     end
 

@@ -13,6 +13,8 @@ class Orgnummer
     if !@number.nil? && !@number.empty?
       # hyphen is ok, but remove it to pass validation algorithm
       @number = @number.gsub(/-/, '')
+      # strip, we are kind and helpful
+      @number = @number.strip
 
       if (@number =~/\A\d{10}\z/) == 0
         multiplier = 2
