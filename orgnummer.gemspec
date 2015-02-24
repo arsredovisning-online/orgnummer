@@ -11,7 +11,6 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Util for creation and validation of the swedish organisationsnummer}
   spec.homepage      = 'http://www.mirendo.se'
   spec.license       = 'MIT'
-  spec.
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
