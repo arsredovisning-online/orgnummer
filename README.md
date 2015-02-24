@@ -16,9 +16,22 @@ Or install it yourself as:
 
     $ gem install orgnummer
 
+## Changelog
+0.0.1. Initial version
+
+0.1.0. Added support for resolving of swedish organization types
+
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+bolag = Orgnummer.new(5568610827)
+
+if bolag.valid?
+    #do something
+
+if bolag.type_of_organization eq :aktiebolag
+   #do something
+```
 
 ## Contributing
 

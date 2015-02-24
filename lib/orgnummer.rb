@@ -38,4 +38,33 @@ class Orgnummer
     self.valid? ? @number[0..5] + '-' + @number[6..10] : "Not a valid number: #{@number}"
   end
 
+  def type_of_organization
+    valid? ? get_type_from_first_char : :odefinierat
+  end
+
+  private
+
+  def get_type_from_first_char
+    case @number[0, 1]
+      when '1'
+        :dodsbo
+      when '2'
+        :stat_landsting_kommun_forsamling
+      when '3'
+        :utlandskt_foretag
+      when '5'
+        :aktiebolag
+      when '6'
+        :enkelt_bolag
+      when '7'
+        :ekonomisk_forening
+      when '8'
+        :ideell_forening_stiftelse
+      when '9'
+        :handels_kommanditbolag
+      else
+        :odefinierat
+    end
+  end
+
 end

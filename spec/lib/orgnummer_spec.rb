@@ -49,5 +49,19 @@ describe Orgnummer do
         expect(short.to_s).to eq 'Not a valid number: 12'
       end
     end
+
+    describe 'type of organization' do
+      it 'resolves type of organization based on number' do
+        expect(ab.type_of_organization).to eq :aktiebolag
+        expect(bad_end.type_of_organization).to eq :odefinierat
+        expect(Orgnummer.new(1568610826).type_of_organization).to eq :dodsbo
+        expect(Orgnummer.new(2568610824).type_of_organization).to eq :stat_landsting_kommun_forsamling
+        expect(Orgnummer.new(3568610822).type_of_organization).to eq :utlandskt_foretag
+        expect(Orgnummer.new(6568610825).type_of_organization).to eq :enkelt_bolag
+        expect(Orgnummer.new(7568610823).type_of_organization).to eq :ekonomisk_forening
+        expect(Orgnummer.new(8568610821).type_of_organization).to eq :ideell_forening_stiftelse
+        expect(Orgnummer.new(9568610829).type_of_organization).to eq :handels_kommanditbolag
+      end
+    end
   end
 end
