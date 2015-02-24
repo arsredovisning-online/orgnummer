@@ -17,7 +17,7 @@ Or install it yourself as:
     $ gem install orgnummer
 
 ## Changelog
-0.1.0. Added support for resolving of swedish organization types
+0.1.0. Added support for resolving swedish organization types
 
 0.0.1. Initial version
 
