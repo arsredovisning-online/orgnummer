@@ -18,6 +18,7 @@ describe Orgnummer do
     let(:bad_end) { Orgnummer.new(5568610828) }
 
     let(:ab) { Orgnummer.new(5568610827) }
+    let(:ba) { Orgnummer.new(5568610828) }
     let(:ab_s) { Orgnummer.new('5568610827') }
     let(:ab_s_with_hyphen) { Orgnummer.new('556861-0827') }
     let(:ab_s_with_spaces) { Orgnummer.new('  556861-0827   ') }
@@ -47,6 +48,25 @@ describe Orgnummer do
 
       it 'gives a hint of validity' do
         expect(short.to_s).to eq 'Not a valid number: 12'
+      end
+    end
+
+    describe 'equals and hash code' do
+      it 'behaves as expected for equals and variants' do
+        expect(ab).to eq ab
+        expect(ab).to eql ab
+        expect(ab).to equal ab
+        expect(ab).to_not equal ab_s
+        expect(ab).to eq ab_s
+        expect(ab_s).to eq ab
+        expect(ab_s).to_not eq ba
+
+      end
+
+      it 'behaves as expected for hash code' do
+        expect(ab.hash).to eq ab.hash
+        expect(ab.hash).to equal ab_s.hash
+        expect(ab.hash).to_not eq ba.hash
       end
     end
 

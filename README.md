@@ -17,6 +17,8 @@ Or install it yourself as:
     $ gem install orgnummer
 
 ## Changelog
+0.1.1. Added implementation of eql? and hash
+
 0.1.0. Added support for resolving swedish organization types
 
 0.0.1. Initial version
@@ -27,12 +29,16 @@ Or install it yourself as:
 
 ```ruby
 bolag = Orgnummer.new(5568610827)
+# bolag = Orgnummer.new('5568610827') is valid
+# bolag = Orgnummer.new('556861-0827') is valid
+# bolag = Orgnummer.new('55') is valid but bolag.valid? will be false
 
 if bolag.valid?
     #do something
 
 if bolag.type_of_organization eq :aktiebolag
    #do something
+
 ```
 
 ## Contributing

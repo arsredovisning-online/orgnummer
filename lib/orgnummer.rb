@@ -5,16 +5,18 @@ class Orgnummer
 
   def initialize(number)
     @number = number.to_s
+    if !@number.nil? && !@number.empty?
+      # hyphen is ok, but remove it to pass validation algorithm
+      @number = @number.gsub(/-/, '')
+      # strip, we are kind and helpful
+      @number = @number.strip
+    end
   end
 
   def valid?
     valid = false
 
     if !@number.nil? && !@number.empty?
-      # hyphen is ok, but remove it to pass validation algorithm
-      @number = @number.gsub(/-/, '')
-      # strip, we are kind and helpful
-      @number = @number.strip
 
       if (@number =~/\A\d{10}\z/) == 0
         multiplier = 2
@@ -40,6 +42,17 @@ class Orgnummer
 
   def type_of_organization
     valid? ? get_type_from_first_char : :odefinierat
+  end
+
+  def eql?(orgnummer)
+    self.class.equal?(orgnummer.class) &&
+        number == orgnummer.number
+  end
+
+  alias == eql?
+
+  def hash
+    number.hash
   end
 
   private
